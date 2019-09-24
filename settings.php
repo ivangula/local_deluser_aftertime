@@ -40,6 +40,15 @@ if ( $hassiteconfig ){
    	$settings->add(new admin_setting_configcheckbox('deluser_aftertime_on_off', get_string('on_off', 'local_deluser_aftertime'),
                        get_string('on_off_desc', 'local_deluser_aftertime'), 0));
 	
+	$optionAuth = array(
+		'email' =>  get_string('pluginname','auth_email'),
+		'manual' =>  get_string('pluginname','auth_manual'),
+		'email_manual' => get_string('all','local_deluser_aftertime')
+	);
+	
+	$settings->add(new admin_setting_configselect('deluser_aftertime_filter', get_string('filter', 'local_deluser_aftertime'),
+                       get_string('filter_desc', 'local_deluser_aftertime'), 'email', $optionAuth));
+	
 	$settings->add(new admin_setting_configtext('deluser_aftertime_count', get_string('count', 'local_deluser_aftertime'),
                        get_string('count_desc', 'local_deluser_aftertime'), 20, PARAM_INT));
 					   

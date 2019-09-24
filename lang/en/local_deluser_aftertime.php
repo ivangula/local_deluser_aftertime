@@ -33,3 +33,9 @@ $string['count_desc'] = 'Period of time.';
 $string['time'] = 'Time Unit';
 $string['time_desc'] = 'Choose Time Unit in which the count will be calculated.';
 $string['deluser'] = 'Delete User After Time Task';
+$string['all'] = 'All Authentications';
+$string['filter'] = 'User Filter';
+$string['filter_desc'] = 'User will be choosen by the filter based on the authentication.';
+$string['id'] = 'ID';
+
+

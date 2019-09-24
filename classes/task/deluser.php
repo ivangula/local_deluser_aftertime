@@ -51,7 +51,15 @@ class deluser extends \core\task\scheduled_task {
 		global $DB, $CFG;	
 		
 		if($CFG->deluser_aftertime_on_off){
-			$select = 'auth = "email" and deleted = 0 and suspended = 0 and timecreated < unix_timestamp(DATE_SUB(curdate(),INTERVAL '.$CFG->deluser_aftertime_count.' '.$CFG->deluser_aftertime_time.'))';
+			
+			if($CFG->deluser_aftertime_filter=='email_manual'){
+				$filter = 'email, manual';
+			}else{
+				$filter = $CFG->deluser_aftertime_filter;
+			}
+			
+			$select = 'auth in('.$filter.') and deleted = 0 and suspended = 0 and timecreated < unix_timestamp(DATE_SUB(curdate(),INTERVAL '.$CFG->deluser_aftertime_count.' '.$CFG->deluser_aftertime_time.'))';
+			
 			$us = $DB->get_records_select('user',$select,[''],'id');	
 			
 			if($us!=NULL){
