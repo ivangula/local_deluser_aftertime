@@ -63,7 +63,7 @@ class delusertable extends table_sql {
 
         // TODO die folgenden Variablen!
 		$from = '{user}';
-		$fields = ['id','firstname','lastname','username', 'auth'];
+		$fields = ['id','firstname','lastname','username', 'auth', 'timecreated'];
 		
 		if($CFG->deluser_aftertime_filter=='email_manual'){
 				$filter = "'email', 'manual'";
@@ -126,7 +126,7 @@ class delusertable extends table_sql {
     }
 	
 	/**
-     * Column username.
+     * Column auth.
      *
      * @param  object $row
      * @return string
@@ -135,6 +135,18 @@ class delusertable extends table_sql {
      */
     protected function col_auth($row) {
         return $row->auth;
+    }
+	
+	/**
+     * Column timecreated.
+     *
+     * @param  object $row
+     * @return string
+     * @throws coding_exception
+     * @throws moodle_exception
+     */
+    protected function col_timecreated($row) {
+        return date("d.m.Y",$row->timecreated);
     }
 	
 	
@@ -169,7 +181,8 @@ class delusertable extends table_sql {
             'firstname' => get_string('firstname'),
             'lastname' => get_string('lastname'),
             'username' => get_string('username'),
-			'auth' => get_string('auth'),
+			'auth' => get_string('auth','mod_organizer'),
+			'timecreated' => get_string('timecreated','local_deluser_aftertime'),
             'admin' => get_string('admin')
         ];
     }

@@ -25,18 +25,18 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Delete User After Time';
-$string['on_off'] = 'On/Off';
-$string['on_off_desc'] = 'On/Off - Switch for the plugin';
-$string['count'] = 'Count';
-$string['count_desc'] = 'Period of time.';
-$string['time'] = 'Time Unit';
-$string['time_desc'] = 'Choose Time Unit in which the count will be calculated.';
+$string['pluginname'] = 'Zeitbedingte Nutzerlöschung';
+$string['on_off'] = 'Ein/Aus';
+$string['on_off_desc'] = 'Schaltet die Löschung der Nutzer ein oder aus.';
+$string['count'] = 'Länge';
+$string['count_desc'] = 'Länge der Zeitperiode';
+$string['time'] = 'Zeiteinheit';
+$string['time_desc'] = 'Die Kombination der Länge und Zeiteinheit wird genutzt um die zeit zu berechnen';
 $string['deluser'] = 'Delete User After Time Task';
-$string['all'] = 'All Authentications';
-$string['filter'] = 'User Filter';
-$string['filter_desc'] = 'User will be choosen by the filter based on the authentication.';
+$string['all'] = 'Alle Authentifizierungsmethoden';
+$string['filter'] = 'Nutzer Filter';
+$string['filter_desc'] = 'Die Nutzer werden anhand der Authentifizierungsmethode gefiltert.';
 $string['id'] = 'ID';
-$string['timecreated'] = 'creation date';
+$string['timecreated'] = 'Erstellungsdatum';
 
 

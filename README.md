@@ -2,6 +2,9 @@
 
 This Plugin is createt to delet user after a period of time.
 
+It has 4 settings: On/off, user filter,count and time period.
+There is a task onec a day that first anonymize and  than delete the user.
+Language - EN, DE
 
 ## License ##
 
