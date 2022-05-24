@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The class for the table. Table view of Users be deleted in 24h.
+ * The class for the table. Table view of Users connected to one entry.
  *
  * @package     local_test_db
  * @copyright   2021 Ivan Gula <ivan.gula.wien@gmail.com>
@@ -77,7 +77,7 @@ class deluserentryuserstable extends  flexible_table {
 
 	
 	/**
-     * Column id.
+     * Column name.
      *
      * @param  object $row
      * @return string
@@ -91,7 +91,7 @@ class deluserentryuserstable extends  flexible_table {
 	
 	
 	/**
-     * Column id.
+     * Column deletedate.
      *
      * @param  object $row
      * @return string
@@ -103,7 +103,7 @@ class deluserentryuserstable extends  flexible_table {
     }
 	
 	/**
-     * Column id.
+     * Column countdown.
      *
      * @param  object $row
      * @return string
@@ -116,7 +116,7 @@ class deluserentryuserstable extends  flexible_table {
 	
 	
 	/**
-     * Column id.
+     * Column activ.
      *
      * @param  object $row
      * @return string
