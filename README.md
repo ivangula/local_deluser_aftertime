@@ -2,8 +2,13 @@
 
 This Plugin is createt to delet user after a period of time.
 
-It has 4 settings: On/off, user filter,count and time period.
+There is posbility to set up a global setting for all users in moodle or creating an entry depending on course.
+
+It has 5 settings: On/off, on/off for entries, user filter,count and time period.
 There is a task onec a day that first anonymize and  than delete the user.
+
+If user is enrolld in more than one course and there are entries for the courses, the longest duration will be used for the deletion.
+
 Language - EN, DE
 
 ## License ##
