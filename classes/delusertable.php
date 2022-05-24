@@ -43,10 +43,8 @@ use core_user;
 
 class delusertable extends table_sql {
 	
-	/**
-     * Sets up the table.
-     *
-     * 
+    /**
+     * Sets up the table. 
      * @throws coding_exception
      */
     public function __construct() {
@@ -61,7 +59,6 @@ class delusertable extends table_sql {
         // Define configs.
         $this->define_table_configs();
 
-        // TODO die folgenden Variablen!
 		$from = '{user}';
 		$fields = ['id','firstname','lastname','username', 'auth', 'timecreated'];
 		
@@ -77,7 +74,7 @@ class delusertable extends table_sql {
         $this->set_sql(implode(', ', $fields), $from, $select);
     }
     
-	  /**
+    /**
      * Column id.
      *
      * @param  object $row
@@ -89,7 +86,7 @@ class delusertable extends table_sql {
         return $row->id;
     }
 	
-	/**
+    /**
      * Column firstname.
      *
      * @param  object $row
@@ -113,7 +110,7 @@ class delusertable extends table_sql {
         return $row->lastname;
     }
 	
-	/**
+    /**
      * Column username.
      *
      * @param  object $row
@@ -125,7 +122,7 @@ class delusertable extends table_sql {
         return $row->username;
     }
 	
-	/**
+    /**
      * Column auth.
      *
      * @param  object $row
@@ -137,7 +134,7 @@ class delusertable extends table_sql {
         return $row->auth;
     }
 	
-	/**
+    /**
      * Column timecreated.
      *
      * @param  object $row
@@ -150,7 +147,7 @@ class delusertable extends table_sql {
     }
 	
 	
-	/**
+    /**
      * Column admin.
      *
      * @param  object $row
@@ -169,7 +166,7 @@ class delusertable extends table_sql {
 		}
     }
 
-	/**
+    /**
      * Returns all columns shown in this table!
      *
      * @return array
