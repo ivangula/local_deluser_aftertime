@@ -67,8 +67,7 @@ class deluser extends \core\task\scheduled_task {
 							$delete_date = strtotime('+'.$longest_entry->amount.' '.$longest_entry->timespan, $user->timecreated);
 							if(time()>$delete_date){
 								$myString.= "User: ".$user->firstname." ".$user->lastname." will be <b>deleted</b> because expire of ".$longest_entry->name."<br>";
-								// Userdaten werden überschrieben
-								// Userdaten werden gelöscht
+								// User data will be updated and deleted
 								$myString.='<b>'.$this->deleteuser($user,$longest_entry->name).'</b></br>';
 							}else{
 								$myString.= "User: ".$user->firstname." ".$user->lastname." <b>stays</b> until: ".date( "d-m-Y", $delete_date)." becaouse of ".$longest_entry->name."<br>";
@@ -79,8 +78,7 @@ class deluser extends \core\task\scheduled_task {
 						$delete_date = strtotime('+'.$CFG->deluser_aftertime_count.' '.$CFG->deluser_aftertime_time, $user->timecreated);
 						if(time()>$delete_date){
 							$myString.= "User:".$user->firstname." ".$user->lastname." no entry - global timespan, will be <b>deleted</b> <br>";
-							// Userdaten werden überschrieben
-							// Userdaten werden gelöscht
+							// User data will be updated and deleted
 							$myString.='<b>'.$this->deleteuser($user).'</b></br>';
 						}else{
 							$myString.= "User:".$user->firstname." ".$user->lastname." no entry - global timespan, <b>stays</b> until: ".date( "d-m-Y", $delete_date)." <br>";
