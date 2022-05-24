@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin user interface.
+ * Plugin delete user after time.
  *
  * @package     local_deluser_aftertime
  * @copyright   2019 Ivan Gula <ivan.gula.wien@gmail.com>
@@ -23,42 +23,32 @@
  */
  
 require_once("../../config.php");
-#require_once("./classes/crontesttable.php");
+
 require_once("./classes/delusertable.php");
-#require_once($CFG->libdir.'/gdlib.php');
-#require_once($CFG->dirroot.'/user/edit_form.php');
-#require_once($CFG->dirroot.'/user/editlib.php');
-#require_once($CFG->dirroot.'/user/profile/lib.php');
-#require_once($CFG->dirroot.'/user/lib.php');
-#require_once($CFG->libdir . '/adminlib.php');
+$url = new moodle_url('/local/deluser_aftertime/index.php');
 
-//admin_externalpage_setup('condrole', '', null, '');
+require_login();
 
-//$models = \core_analytics\manager::get_all_models();
-$PAGE->set_heading(get_string('pluginname', 'local_deluser_aftertime'));
+$title = get_string('pluginname', 'local_deluser_aftertime');
+
+$systemcontext = context_system::instance();
+$PAGE->set_context($systemcontext);
+$PAGE->set_url($url);
+
+require_capability('local/deluser_aftertime:read', $systemcontext);
+
+$PAGE->set_pagelayout('report');
+
+$PAGE->set_title($title);
+$PAGE->set_heading($title);
+
 
 echo $OUTPUT->header();
-
-#global $DB, $CFG, $USER;	
-		
+echo $OUTPUT->heading($title." - ".get_string('reports'));
 		
 
-$table = new \local_deluser_aftertime\delusertable();
-#$table = new delusertable();
-$table->out(50,false);
+$table = new \local_deluser_aftertime\delusertable(); // Create table of all User that will be deleted.
+$table->out(50,false);	//Show table.
 
-
-/*global $OUTPUTHEADING;
-echo "<div><p>".get_string('pluginname_desc', 'local_edaktik_condrole')."</p></div>";
-$addNewRuleUrl = new moodle_url('/local/edaktik_condrole/edit.php');
-echo "<span style='background-color:#def2f8; padding: 4px 6px; border-radius: 4px'><a href='".$addNewRuleUrl."'>".get_string('rule_add', 'local_edaktik_condrole')."</a></span>";
-
-$table = new \local_edaktik_condrole\rulestable();
-$table->out(50,false);
-*/
-
-
-//$templatable = new \tool_analytics\output\models_list($models);
-//echo $PAGE->get_renderer('tool_analytics')->render($templatable);
 
 echo $OUTPUT->footer();

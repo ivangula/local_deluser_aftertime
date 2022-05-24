@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_deluser_aftertime';
-$plugin->release = '0.1.0';
-$plugin->version = 2020012301;
-$plugin->requires = 2019091300;
+$plugin->release = '0.1.5';
+$plugin->version = 2021061001;
+$plugin->requires = 2020060900;
 $plugin->maturity = MATURITY_ALPHA;

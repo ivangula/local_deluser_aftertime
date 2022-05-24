@@ -26,19 +26,24 @@
 defined('MOODLE_INTERNAL') || die();
 
 if ( $hassiteconfig ){
- 
+	
 	// Create the new settings page
 	// - in a local plugin this is not defined as standard, so normal $settings->methods will throw an error as
 	// $settings will be NULL
-	$settings = new admin_settingpage( 'deluser_aftertime',  get_string('pluginname', 'local_deluser_aftertime'));
+	$ADMIN->add('localplugins', new admin_category('mycategory_deluser_aftertime', get_string('pluginname', 'local_deluser_aftertime')));
+	
+	$settings = new admin_settingpage( 'deluser_aftertime',  get_string('settings'));
  
 	// Create 
-	$ADMIN->add( 'localplugins', $settings );
+	$ADMIN->add( 'mycategory_deluser_aftertime', $settings );
 	
    // TODO: Define the plugin settings page.
    // https://docs.moodle.org/dev/Admin_settings
    	$settings->add(new admin_setting_configcheckbox('deluser_aftertime_on_off', get_string('on_off', 'local_deluser_aftertime'),
                        get_string('on_off_desc', 'local_deluser_aftertime'), 0));
+	
+	$settings->add(new admin_setting_configcheckbox('deluser_aftertime_entry_on_off', get_string('on_off_entry', 'local_deluser_aftertime'),
+                       get_string('on_off_entry_desc', 'local_deluser_aftertime'), 0));
 	
 	$optionAuth = array(
 		'email' =>  get_string('pluginname','auth_email'),
