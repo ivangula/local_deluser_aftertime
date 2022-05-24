@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The class for the table. Table view of Users be deleted in 24h.
+ * The class for the table. Table view of all entries.
  *
  * @package     local_test_db
  * @copyright   2021 Ivan Gula <ivan.gula.wien@gmail.com>
@@ -34,7 +34,7 @@ use moodle_url;
 use html_writer;
 
 class deluserentrytable extends table_sql {
-	 public function __construct() {
+	public function __construct() {
         global $PAGE, $CFG;
 
         parent::__construct('deluserentrytable');
@@ -46,7 +46,6 @@ class deluserentrytable extends table_sql {
         // Define configs.
         $this->define_table_configs();
 
-        // TODO die folgenden Variablen!
 		$from = '{local_deluser_aftertime}';
 		
 		$fields = ['id', 'name', 'courseid', 'timespan', 'amount', 'filter', 'active'];
@@ -71,7 +70,7 @@ class deluserentrytable extends table_sql {
     }
 	
 	/**
-     * Column id.
+     * Column course id.
      *
      * @param  object $row
      * @return string
@@ -84,7 +83,7 @@ class deluserentrytable extends table_sql {
     }
 	
 	/**
-     * Column id.
+     * Column name.
      *
      * @param  object $row
      * @return string
@@ -99,7 +98,7 @@ class deluserentrytable extends table_sql {
 	
 	
 	/**
-     * Column id.
+     * Column timestamp.
      *
      * @param  object $row
      * @return string
@@ -112,7 +111,7 @@ class deluserentrytable extends table_sql {
     }
 	
 	/**
-     * Column id.
+     * Column amount.
      *
      * @param  object $row
      * @return string
@@ -124,7 +123,7 @@ class deluserentrytable extends table_sql {
     }
 	
 	/**
-     * Column id.
+     * Column filter.
      *
      * @param  object $row
      * @return string
@@ -141,7 +140,7 @@ class deluserentrytable extends table_sql {
     }
 	
 	/**
-     * Column id.
+     * Column activ.
      *
      * @param  object $row
      * @return string
