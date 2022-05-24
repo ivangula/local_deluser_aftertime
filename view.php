@@ -28,7 +28,7 @@ $dbtable = "local_deluser_aftertime";
 $dbenrol = "enrol";
 $dbuser_enrolments = "user_enrolments";
 
-
+// Getting all users of one entry
 $entry = $DB->get_record($dbtable,['id'=>$entryid]);
 $allenrolments = $DB->get_records($dbenrol,array('courseid'=>$entry->courseid),'','id'); 
 $allusersincousedb =  array();
@@ -40,7 +40,6 @@ foreach($allenrolments as $index=>$value){
 $allusersIDs = array();
 foreach($allusersincousedb as $index=>$idsarray){
 		foreach($idsarray as $ids){
-			//var_dump($ids->userid);
 			$allusersIDs[] = $ids->userid;
 		}
 }
@@ -48,10 +47,10 @@ foreach($allusersincousedb as $index=>$idsarray){
 $allusersIDs = array_unique($allusersIDs);
 $myrows = Array();
 
+// Creating rows of table from users in entry
 foreach($allusersIDs as $userID){
 	$user = $DB->get_record('user',array('id'=>$userID));
-	//$user->load($userID);
-	//var_dump($user);
+	
 	if(!is_siteadmin($user)){
 		if($entry->filter == 'email_manual' || $entry->filter == $user->auth){
 			$newrow = Array();
@@ -73,7 +72,7 @@ foreach($allusersIDs as $userID){
 
 $course = get_course($entry->courseid);
 	
-
+// Creating the table
 $testtable = new flexible_table('my_flexible_table2');
 $tablecolumns = array('name','created' ,'deletedate', 'countdown', 'active');
 $testtable->define_columns($tablecolumns);
@@ -82,28 +81,16 @@ $testtable->define_headers($tableheaders);
 $testtable->sortable(false);
 $testtable->define_baseurl($url);
 $testtable->setup();
-$row = array("name"=>"35","created"=>"??", "deletedate"=>"37", "countdown"=>"43", "active"=>"active");
-//$row = array('Ivan Gula', '6.6.2021', 'in 7 Tagen', 'active');
 
 
 echo $OUTPUT->header();
 echo $OUTPUT->heading($title." - ".get_string('course').": ".$course->fullname); 	
 
-//var_dump($entry);
-//echo html_writer::empty_tag('br');
-//echo html_writer::div('/////////////////////////////////////////////////////////////');
-//echo html_writer::empty_tag('br');
-//var_dump($myrows);
 
 foreach($myrows as $row){
 	$testtable->add_data($row);
 }
-//$testtable->add_data($entryusers);
-/*$mytable = new \local_deluser_aftertime\deluserentryuserstable('my_flexible_table1');
-$mytable->define_baseurl($url);
-$mytable->setup();
-$mytable->add_data($entryusers, $tablecolumns);
-echo html_writer::div($mytable->finish_output());*/
+
 
 $testtable->finish_output();
 
