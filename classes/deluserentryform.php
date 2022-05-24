@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The class for the table. Table view of Users be deleted in 24h.
+ * The class for the entry form. Form used to create and edit entries.
  *
  * @package     local_deluser_aftertime
  * @copyright   2021 Ivan Gula <ivan.gula.wien@gmail.com>
@@ -33,12 +33,10 @@ use moodleform;
 
  
 class deluserentryform extends moodleform {
-    //Add elements to form
     public function definition() {
         global $CFG, $DB;
 		
-		
-		
+	    	// Preparing course select drop down.
 		$courses_option = array();
 		$coures = get_courses();
 		
@@ -49,7 +47,7 @@ class deluserentryform extends moodleform {
 			}
 		}
 		
-		
+		// Preparing timestamp drop down.
 		$timespan_option = array(
 			'DAY' => get_string('day'),
 			'WEEK' => get_string('week'),
@@ -57,16 +55,18 @@ class deluserentryform extends moodleform {
 			'YEAR' => get_string('year')
 		);
 		
+	    	// Preparing authentification drop down
 		$optionAuth = array(
 			'email' =>  get_string('pluginname','auth_email'),
 			'manual' =>  get_string('pluginname','auth_manual'),
 			'email_manual' => get_string('all','local_deluser_aftertime')
 		);
+	
+	//Creating the form.     
+        $mform = $this->_form; 
 		
-        $mform = $this->_form; // Don't forget the underscore! 
 		
-		
-		$mform->addElement('hidden', 'id', 0); //PARAM_INT 
+		$mform->addElement('hidden', 'id', 0); 
 		$mform->setType('id', PARAM_INT);
 		
 		$mform->addElement('text', 'name', get_string('name','local_deluser_aftertime'));
@@ -87,7 +87,7 @@ class deluserentryform extends moodleform {
 		$this->add_action_buttons();
 		
     }
-    //Custom validation should be added here
+    //TODO! Custom validation should be added here.
     function validation($data, $files) {
         return array();
     }
